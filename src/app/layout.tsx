@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import PaddleProvider from "@/components/providers/PaddleProvider";
+import AuthProvider from "@/components/providers/AuthProvider";
+import { getServerSession } from "next-auth";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,15 +15,19 @@ export const metadata: Metadata = {
   title: "Creobots",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <body className={`${inter.variable} ${inter.className} antialiased`}>
-        <PaddleProvider>{children}</PaddleProvider>
+        <AuthProvider session={session}>
+          <PaddleProvider>{children}</PaddleProvider>
+        </AuthProvider>
 
         <Analytics />
       </body>
