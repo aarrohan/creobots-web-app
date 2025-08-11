@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+button,
+input,
+textarea,
+select {
+  outline: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.bg-gradient {
+  background: linear-gradient(158deg, #fdc10f, #b2c38a, #4b94fc 100.02%);
+}

@@ -24,7 +24,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${inter.className} antialiased`}>
+      <body
+        className={`${inter.variable} ${inter.className} antialiased bg-gradient-to-b from-[#1C2943] to-black text-white`}
+      >
         <AuthProvider session={session}>
           <PaddleProvider>{children}</PaddleProvider>
         </AuthProvider>
