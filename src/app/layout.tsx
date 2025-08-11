@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import PaddleProvider from "@/components/providers/PaddleProvider";
 
 const inter = Inter({
@@ -21,6 +22,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${inter.className} antialiased`}>
         <PaddleProvider>{children}</PaddleProvider>
+
+        <Analytics />
       </body>
     </html>
   );
