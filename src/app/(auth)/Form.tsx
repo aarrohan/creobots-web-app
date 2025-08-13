@@ -18,7 +18,7 @@ export default function Form() {
 
       <button
         onClick={() => signIn("google")}
-        className="group relative active:scale-95 w-[300px] py-2.5 bg-gradient rounded-full font-semibold text-[#111] duration-200"
+        className="group relative active:scale-95 w-[300px] py-2.5 bg-gradient rounded-lg font-semibold text-black duration-200"
       >
         <span className="relative z-10 w-full flex justify-center items-center gap-2">
           <svg
@@ -56,10 +56,12 @@ export default function Form() {
           Continue with Google
         </span>
 
-        <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[calc(100%-5px)] h-[calc(100%-5px)] bg-gradient-to-b from-white/75 to-transparent rounded-full opacity-0 group-hover:opacity-100 duration-200"></span>
+        <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[calc(100%-5px)] h-[calc(100%-5px)] bg-gradient-to-b from-white/75 to-transparent rounded-md opacity-0 group-hover:opacity-100 duration-200"></span>
       </button>
 
-      <p className="mt-3 font-light text-white/50">+ more coming soon</p>
+      <p className="mt-3 text-sm font-light text-white/50">
+        + more coming soon
+      </p>
 
       <Image src={usersImg} alt="" className="mt-12 w-[180px]" />
       <p className="mt-2">Trusted by 1,000+ creators globally</p>
