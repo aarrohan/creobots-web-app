@@ -176,7 +176,7 @@ export default function Sidebar() {
         {
           icon: <Flag size={20} />,
           title: "Roadmap",
-          href: "#",
+          href: "/dashboard/roadmap",
         },
       ],
     },
@@ -274,12 +274,15 @@ export default function Sidebar() {
         </div>
 
         <div>
-          {isClient && isOpened && session.data?.user?.name && (
-            <UserBox
-              userImg={session.data.user.image ?? ""}
-              userName={session.data.user.name}
-            />
-          )}
+          {isClient &&
+            isOpened &&
+            session.data?.user?.name &&
+            session.data?.user?.image && (
+              <UserBox
+                userImg={session.data.user.image ?? ""}
+                userName={session.data.user.name}
+              />
+            )}
 
           <LogoutBtn isOpened={isOpened} />
         </div>

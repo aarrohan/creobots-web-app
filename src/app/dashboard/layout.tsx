@@ -24,7 +24,7 @@ export default async function DashboardLayout({
     <main className="min-h-[100svh] bg-gradient-to-b from-[#12203d] to-black flex items-start">
       <Sidebar />
 
-      <div className="flex-1 min-h-[100svh] p-5 flex flex-col gap-5">
+      <div className="flex-1 min-h-[100svh] py-12 pl-5 pr-8 flex flex-col gap-6">
         <Topbar />
 
         <div className="flex-1">{children}</div>
