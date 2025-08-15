@@ -24,10 +24,10 @@ export default async function DashboardLayout({
     <main className="min-h-[100svh] bg-gradient-to-b from-[#12203d] to-black flex items-start">
       <Sidebar />
 
-      <div className="flex-1 min-h-[100svh] py-12 pl-5 pr-8 flex flex-col gap-6">
+      <div className="flex-1 h-[100svh] pt-12 flex flex-col">
         <Topbar />
 
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 pt-6 pb-12 px-8 overflow-y-auto">{children}</div>
       </div>
     </main>
   );

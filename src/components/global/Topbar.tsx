@@ -17,7 +17,7 @@ export default function Topbar() {
   }, []);
 
   return (
-    <div className="relative pb-6 flex justify-between items-center">
+    <div className="relative pb-6 px-8 flex justify-between items-center">
       <h1 className="text-2xl font-semibold">
         {pathname === "/dashboard" && "Viral Thumbnails"}
         {pathname === "/dashboard/roadmap" && "Roadmap"}
@@ -46,7 +46,7 @@ export default function Topbar() {
         )}
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-[rgba(255,255,255,0.025)] via-white/10 to-[rgba(255,255,255,0.025)]"></div>
+      <div className="absolute bottom-0 left-8 w-[calc(100%-64px)] h-px bg-gradient-to-r from-[rgba(255,255,255,0.025)] via-white/10 to-[rgba(255,255,255,0.025)]"></div>
     </div>
   );
 }
