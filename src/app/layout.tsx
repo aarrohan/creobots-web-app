@@ -20,7 +20,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession();
+  const session = await getServerSession({
+    secret: process.env.NEXTAUTH_SECRET,
+  });
 
   return (
     <html lang="en">
