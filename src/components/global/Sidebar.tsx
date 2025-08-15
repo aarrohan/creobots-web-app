@@ -171,7 +171,7 @@ export default function Sidebar() {
         {
           icon: <History size={20} />,
           title: "Job History",
-          href: "#",
+          href: "/dashboard/job-history",
         },
         {
           icon: <Flag size={20} />,

@@ -20,6 +20,7 @@ export default function Topbar() {
     <div className="relative pb-6 px-8 flex justify-between items-center">
       <h1 className="text-2xl font-semibold">
         {pathname === "/dashboard" && "Viral Thumbnails"}
+        {pathname === "/dashboard/job-history" && "Job History"}
         {pathname === "/dashboard/roadmap" && "Roadmap"}
       </h1>
 
