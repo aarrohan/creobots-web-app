@@ -14,6 +14,7 @@ import {
   Webhook,
   Play,
   Flag,
+  Crown,
 } from "lucide-react";
 import logoColoredWhiteImg from "@/assets/images/brand/logo/logo-colored-white.svg";
 import iconColoredWhiteImg from "@/assets/images/brand/icon/icon-colored-white.svg";
@@ -68,7 +69,7 @@ function UserBox({
 
           <p>
             <span className="font-medium">20</span>{" "}
-            <span className="font-light text-white/65">jobs left</span>
+            <span className="font-light text-white/65">coins left</span>
           </p>
         </div>
 
@@ -84,22 +85,26 @@ function UserBox({
               side="top"
               className="py-1.5 px-2 bg-[#fff] rounded text-xs font-medium text-black"
             >
-              1 Job = 4 Thumbnail Variations (Turbo) <br />
-              1 Job = 2 Thumbnail Variations (Quality) <br />
-              1 Job = 1 Thumbnail Variation (Max)
+              1 Coin = 3 Thumbnails (Turbo) <br />
+              1 Coin = 2 Thumbnails (Quality) <br />
+              1 Coin = 1 Thumbnail (Max)
               <Tooltip.Arrow className="fill-[#fff]" />
             </Tooltip.Content>
           </Tooltip.Root>
         </Tooltip.Provider>
       </div>
 
-      <button className="group relative active:scale-95 w-full h-[40px] bg-gradient rounded-lg font-semibold text-black duration-200">
+      <Link
+        href={"/dashboard/subscription"}
+        className="group relative active:scale-95 w-full h-[40px] bg-gradient rounded-lg flex items-center font-semibold text-black duration-200"
+      >
         <span className="relative z-10 w-full flex justify-center items-center gap-2">
+          <Crown size={20} />
           Upgrade
         </span>
 
         <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[calc(100%-5px)] h-[calc(100%-5px)] bg-gradient-to-b from-white/75 to-transparent rounded-md opacity-0 group-hover:opacity-100 duration-200"></span>
-      </button>
+      </Link>
     </div>
   );
 }
@@ -166,12 +171,12 @@ export default function Sidebar() {
         {
           icon: <Eclipse size={20} />,
           title: "Manage Subscription",
-          href: "#",
+          href: "/dashboard/subscription",
         },
         {
           icon: <History size={20} />,
-          title: "Job History",
-          href: "/dashboard/job-history",
+          title: "Coin History",
+          href: "/dashboard/coin-history",
         },
         {
           icon: <Flag size={20} />,

@@ -5,12 +5,12 @@ export default function Content() {
         <div className="grid grid-cols-[100px_auto_200px_200px_200px]">
           <p className="text-xs uppercase text-white/50">Id</p>
           <p className="text-xs uppercase text-white/50">Tool</p>
-          <p className="text-xs uppercase text-white/50">Jobs used</p>
+          <p className="text-xs uppercase text-white/50">Coins used</p>
           <p className="text-xs uppercase text-white/50">Date</p>
           <p className="text-xs uppercase text-white/50">Actions</p>
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-2">
+        <div className="mt-14 flex flex-col items-center gap-2.5">
           <svg
             width="64"
             height="41"

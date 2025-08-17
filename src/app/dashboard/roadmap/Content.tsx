@@ -26,12 +26,11 @@ export default function Content() {
 
         <h3 className="relative mb-1 text-xl font-medium">
           <span className="absolute top-1/2 -left-[26px] -translate-y-1/2 w-[15px] h-[15px] border-3 border-black bg-white rounded-full"></span>{" "}
-          Characters
+          FaceSwap AI
         </h3>
 
         <p className="font-light text-white/65">
-          Create multiple characters by uploading faces and simply replace in
-          thumbnails.
+          Swap faces in your thumbnails by simply uploading the desired face.
         </p>
       </div>
 

@@ -16,6 +16,12 @@ button {
   background: linear-gradient(158deg, #fdc10f, #b2c38a, #4b94fc 100.02%);
 }
 
+.text-gradient {
+  background: linear-gradient(158deg, #fdc10f, #b2c38a, #4b94fc 100.02%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .overflow-y-auto {
   scrollbar-width: thin;
   scrollbar-color: #ffffff1a transparent;
