@@ -32,7 +32,7 @@ export default function Topbar() {
               <Image src={creditCoinImg} alt="" className="w-[22px]" />
 
               <p>
-                <span className="font-medium">20</span>{" "}
+                <span className="font-medium">500</span>{" "}
                 <span className="font-light text-white/65">coins left</span>
               </p>
             </div>

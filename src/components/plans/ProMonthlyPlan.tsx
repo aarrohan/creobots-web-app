@@ -10,7 +10,7 @@ interface IProps {
 
 export default function ProMonthlyPlan({ type, setType }: IProps) {
   return (
-    <div className="p-7 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] backdrop-blur-3xl rounded-xl">
+    <div className="p-7 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] rounded-xl">
       <h3 className="w-fit text-xl font-semibold text-gradient">Pro</h3>
 
       <h4 className="my-3 text-5xl font-semibold">
@@ -47,8 +47,7 @@ export default function ProMonthlyPlan({ type, setType }: IProps) {
                 className="z-[1000] py-1.5 px-2 bg-[#fff] rounded text-xs font-medium text-black"
               >
                 1 Coin = 3 Thumbnails (Turbo) <br />
-                1 Coin = 2 Thumbnails (Quality) <br />
-                1 Coin = 1 Thumbnails (Max)
+                1 Coin = 1 Thumbnail (Quality)
                 <Tooltip.Arrow className="fill-[#fff]" />
               </Tooltip.Content>
             </Tooltip.Root>

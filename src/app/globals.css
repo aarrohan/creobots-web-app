@@ -26,3 +26,19 @@ button {
   scrollbar-width: thin;
   scrollbar-color: #ffffff1a transparent;
 }
+
+.loader-fading-animation {
+  animation: loaderFading 1s infinite;
+}
+
+@keyframes loaderFading {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}

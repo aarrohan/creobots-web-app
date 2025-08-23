@@ -1,0 +1,90 @@
+{
+  "theme": {
+    "label": "Theme",
+    "options": {
+      "Default": "",
+      "Bold": "Bold and high-impact visuals, strong outlines, clear contrast",
+      "Cinematic": "Cinematic, dramatic lighting, movie-poster feel",
+      "Meme": "Casual meme style, text like captions, humorous tone",
+      "Minimal": "Clean, simple design, lots of whitespace, modern look"
+    }
+  },
+  "layout": {
+    "label": "Layout",
+    "options": {
+      "Default": "",
+      "Split Screen": "Split-screen composition, strong contrast between left and right",
+      "Big Face Text": "Close-up of face with large bold title next to it",
+      "Text Focus": "Typography is dominant, image secondary"
+    }
+  },
+  "textStyle": {
+    "label": "Text Style",
+    "options": {
+      "Default": "",
+      "Bold Block": "Bold sans-serif, UPPERCASE, thick outline, drop shadow, high contrast",
+      "Serif Elegant": "Elegant serif, gold/ivory tones, subtle glow",
+      "Neon Glow": "Neon glowing text on dark background",
+      "Comic Pop": "Chunky colorful letters, sticker effect",
+      "Graffiti": "Spray-painted, hand-drawn graffiti letters, vibrant colors",
+      "Luxury Gold": "Metallic gold text, subtle bevel, black backdrop, premium look",
+      "Horror Grunge": "Distressed grunge letters, red on dark, rough edges",
+      "Retro 80s": "Chrome gradient, magenta/cyan highlights, retro look",
+      "Esports Tech": "Angular tech sans, bold outline, esports energy"
+    }
+  },
+  "emotion": {
+    "label": "Emotion",
+    "options": {
+      "Default": "",
+      "Happy": "Happy expression, smiling face, positive energy",
+      "Shocked": "Shocked wide-eyed expression, exaggerated reaction",
+      "Angry": "Angry, intense expression",
+      "Sad": "Sad, emotional expression",
+      "Surprised": "Surprised reaction, mouth open, dramatic",
+      "Excited": "Excited and enthusiastic expression"
+    }
+  },
+  "colorMood": {
+    "label": "Color Mood",
+    "options": {
+      "Default": "",
+      "High Contrast": "Bright high-contrast colors for readability",
+      "Dark Moody": "Dark moody cinematic tones",
+      "Bright Vibrant": "Bright vibrant colors, playful energy",
+      "Red Black": "Red and black dramatic palette",
+      "Neon": "Neon cyan/magenta glowing colors"
+    }
+  },
+  "textEmphasis": {
+    "label": "Text Emphasis",
+    "options": {
+      "Default": "",
+      "Huge Title": "Massive bold title dominating the frame",
+      "Balanced": "Balanced design between image and text",
+      "Subtitle Only": "Mainly image-focused, text is small subtitle"
+    }
+  },
+  "category": {
+    "label": "Category",
+    "options": {
+      "Default": "",
+      "Fitness": "Dynamic gym environment, motivational energy, bold text",
+      "Gaming": "Colorful, action-packed, esports vibe, angular text",
+      "Tech": "Clean modern design, futuristic tones, bold text",
+      "Vlog": "Casual lifestyle feel, friendly approachable text",
+      "Education": "Clear readable design, teacher/whiteboard vibe",
+      "Cooking": "Bright warm tones, food focus, bold inviting text"
+    }
+  },
+  "overlayElements": {
+    "label": "Overlay Elements",
+    "options": {
+      "Arrows": "Add bright red arrows pointing at key elements",
+      "Circles": "Add yellow circle highlights around important areas",
+      "Emoji": "Include relevant emoji for emphasis",
+      "Question Marks": "Add big bold question marks for curiosity",
+      "Checkmarks": "Add bold checkmark or X symbols for clarity"
+    }
+  }
+}

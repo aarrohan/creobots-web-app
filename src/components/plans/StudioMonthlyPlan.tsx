@@ -9,7 +9,7 @@ interface IProps {
 
 export default function StudioMonthlyPlan({ type, setType }: IProps) {
   return (
-    <div className="p-7 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] backdrop-blur-3xl rounded-xl">
+    <div className="p-7 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] rounded-xl">
       <h3 className="w-fit text-xl font-semibold text-gradient">Studio</h3>
 
       <h4 className="my-3 text-5xl font-semibold">
@@ -45,9 +45,8 @@ export default function StudioMonthlyPlan({ type, setType }: IProps) {
                 side="top"
                 className="z-[1000] py-1.5 px-2 bg-[#fff] rounded text-xs font-medium text-black"
               >
-                1 Coin = 4 Thumbnails (Turbo) <br />
-                1 Coin = 2 Thumbnails (Quality) <br />
-                1 Coin = 1 Thumbnails (Max)
+                1 Coin = 3 Thumbnails (Turbo) <br />
+                1 Coin = 1 Thumbnail (Quality)
                 <Tooltip.Arrow className="fill-[#fff]" />
               </Tooltip.Content>
             </Tooltip.Root>
@@ -69,20 +68,20 @@ export default function StudioMonthlyPlan({ type, setType }: IProps) {
                 <br />
                 Month 1: <br />{" "}
                 <span className="text-green-500">
-                  +3 Coin or 12 Thumbnails
+                  +3 Coin or 9 Thumbnails
                 </span>{" "}
                 <br />
                 <br />
                 Month 2:
                 <br />{" "}
                 <span className="text-green-500">
-                  +6 Coins or 24 Thumbnails
+                  +6 Coins or 18 Thumbnails
                 </span>
                 <br />
                 <br />
                 Month 3 & onward: <br />{" "}
                 <span className="text-green-500">
-                  +9 Coins or 36 Thumbnails
+                  +9 Coins or 27 Thumbnails
                 </span>{" "}
                 <br />
                 <br />

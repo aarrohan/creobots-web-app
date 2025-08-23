@@ -15,12 +15,14 @@ import {
   Play,
   Flag,
   Crown,
+  GalleryHorizontalEnd,
 } from "lucide-react";
 import logoColoredWhiteImg from "@/assets/images/brand/logo/logo-colored-white.svg";
 import iconColoredWhiteImg from "@/assets/images/brand/icon/icon-colored-white.svg";
 import creditCoinImg from "@/assets/images/brand/credit-coin.png";
 import { usePathname } from "next/navigation";
 import * as Tooltip from "@radix-ui/react-tooltip";
+import { coinsUsage } from "@/lib/constants";
 
 interface ILink {
   icon: React.ReactNode;
@@ -55,7 +57,7 @@ function UserBox({
         )}
 
         <div>
-          <h1 className="mb-1 text-center font-medium">{userName}</h1>
+          <h3 className="mb-1 text-center font-medium">{userName}</h3>
 
           <p className="w-fit py-px px-2 bg-gradient rounded-full text-xs font-medium uppercase text-black">
             Free trial
@@ -68,7 +70,7 @@ function UserBox({
           <Image src={creditCoinImg} alt="" className="w-[22px]" />
 
           <p>
-            <span className="font-medium">20</span>{" "}
+            <span className="font-medium">500</span>{" "}
             <span className="font-light text-white/65">coins left</span>
           </p>
         </div>
@@ -83,11 +85,12 @@ function UserBox({
 
             <Tooltip.Content
               side="top"
-              className="py-1.5 px-2 bg-[#fff] rounded text-xs font-medium text-black"
+              className="z-[1000] min-w-[250px] max-w-[250px] py-1.5 px-2 bg-[#fff] rounded"
             >
-              1 Coin = 3 Thumbnails (Turbo) <br />
-              1 Coin = 2 Thumbnails (Quality) <br />
-              1 Coin = 1 Thumbnail (Max)
+              <div
+                className="grid grid-cols-[auto_60px] text-xs font-medium leading-5 text-black"
+                dangerouslySetInnerHTML={{ __html: coinsUsage }}
+              ></div>
               <Tooltip.Arrow className="fill-[#fff]" />
             </Tooltip.Content>
           </Tooltip.Root>
@@ -169,6 +172,11 @@ export default function Sidebar() {
       title: "Other",
       links: [
         {
+          icon: <GalleryHorizontalEnd size={20} />,
+          title: "Creations",
+          href: "/dashboard/creations",
+        },
+        {
           icon: <Eclipse size={20} />,
           title: "Manage Subscription",
           href: "/dashboard/subscription",
@@ -191,9 +199,9 @@ export default function Sidebar() {
     <div
       className={`${
         isOpened ? "w-[420px] min-w-[420px]" : "w-[170px] min-w-[170px]"
-      } h-[100svh] p-5`}
+      } relative z-[1000] h-[100svh] p-5`}
     >
-      <div className="h-full p-7 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] backdrop-blur-3xl rounded-xl flex flex-col justify-between gap-5">
+      <div className="h-full p-7 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] rounded-xl flex flex-col justify-between gap-5">
         <div className="flex-1 flex flex-col">
           <div className="flex justify-between items-center">
             <Link href={"/dashboard"}>
