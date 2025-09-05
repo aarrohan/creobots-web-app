@@ -24,9 +24,10 @@ function Loader({ isGenerating }: { isGenerating: boolean }) {
             clearInterval(interval);
             return 95;
           }
-          return prev + 5;
+
+          return prev + 1;
         });
-      }, 250);
+      }, 100);
 
       return () => clearInterval(interval);
     } else {

@@ -1,4 +1,4 @@
-import ThumbnailGenerator from "@/components/tools/thumbnail-generator/ThumbnailGenerator";
+import ThumbnailGeneratorTool from "@/components/tools/thumbnail-generator/ThumbnailGeneratorTool";
 
 export default function Content() {
   return (
@@ -7,7 +7,7 @@ export default function Content() {
         Generate <span className="text-gradient">Viral Thumbnails</span>
       </h2>
 
-      <ThumbnailGenerator />
+      <ThumbnailGeneratorTool />
     </div>
   );
 }

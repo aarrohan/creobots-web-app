@@ -40,7 +40,13 @@ export default function AspectRatio({ aspectRatio, setAspectRatio }: IProps) {
             )}
           </div>
 
-          <p className="text-sm">Aspect ratio: {aspectRatio}</p>
+          <p className="text-sm">
+            {aspectRatio === "9:16"
+              ? "Short/Reel"
+              : aspectRatio === "16:9"
+              ? "Video"
+              : "Post"}
+          </p>
         </div>
       </div>
 
@@ -58,19 +64,19 @@ export default function AspectRatio({ aspectRatio, setAspectRatio }: IProps) {
             <div className="mb-8 h-[260px] flex justify-center items-center">
               {aspectRatio === "9:16" && (
                 <div className="h-[260px] aspect-[9/16] border border-white bg-black/75 rounded-lg flex flex-col justify-center items-center">
-                  <p>9:16</p>
+                  <p>Short/Reel</p>
                 </div>
               )}
 
               {aspectRatio === "16:9" && (
                 <div className="h-[160px] aspect-[16/9] border border-white bg-black/75 rounded-lg flex flex-col justify-center items-center">
-                  <p>16:9</p>
+                  <p>Video</p>
                 </div>
               )}
 
               {aspectRatio === "1:1" && (
                 <div className="h-[160px] aspect-[1/1] border border-white bg-black/75 rounded-lg flex flex-col justify-center items-center">
-                  <p>1:1</p>
+                  <p>Post</p>
                 </div>
               )}
             </div>

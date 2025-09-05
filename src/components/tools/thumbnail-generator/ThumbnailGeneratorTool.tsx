@@ -8,16 +8,21 @@ import Templates from "./Templates";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import Generations from "./Generations";
 import { IProps as IGeneration } from "./Generation";
+import preferencesJson from "@/lib/preferences.json";
+import Reference from "./Reference";
+import { useSession } from "next-auth/react";
 
-export default function ThumbnailGenerator() {
+export default function ThumbnailGeneratorTool() {
   const [prompt, setPrompt] = useState<string>("");
 
   const [aspectRatio, setAspectRatio] = useState<"9:16" | "16:9" | "1:1">(
     "9:16"
   );
+  const [refImg, setRefImg] = useState<File | null>(null);
+  const [refWeight, setRefWeight] = useState<number>(80);
 
   const [theme, setTheme] = useState<string>("Default");
-  const [layout, setLayout] = useState<string>("Default");
+  const [style, setStyle] = useState<string>("Default");
   const [textStyle, setTextStyle] = useState<string>("Default");
   const [emotion, setEmotion] = useState<string>("Default");
   const [colorMood, setColorMood] = useState<string>("Default");
@@ -40,11 +45,13 @@ export default function ThumbnailGenerator() {
       prompt: `Let's replace this woman's face with Chris Hemsworth's face, the Oscar trophy on the left and the doll will be replaced by Thor's hammer. The color of the thumbnail can be blue, let's add contrast, well-lit points of light.`,
       aspectRatio: "16:9",
       images: [
-        "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-04_result.webp",
-        "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-03_result.webp",
+        "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-20_result.webp",
+        "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-05_result.webp",
       ],
     },
   ]);
+
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,15 +69,125 @@ export default function ThumbnailGenerator() {
     const chunks: string[] = [];
     const push = (s?: string) => s && chunks.push(s);
 
-    push();
+    // Theme
+    if (theme !== "Default") {
+      push(
+        preferencesJson.theme.options[
+          theme as keyof typeof preferencesJson.theme.options
+        ]
+      );
+    }
+
+    // Style
+    if (style !== "Default") {
+      push(
+        preferencesJson.style.options[
+          style as keyof typeof preferencesJson.style.options
+        ]
+      );
+    }
+
+    // Text style
+    if (textStyle !== "Default") {
+      push(
+        `Text style: ${
+          preferencesJson.textStyle.options[
+            textStyle as keyof typeof preferencesJson.textStyle.options
+          ]
+        }, no misspellings`
+      );
+    }
+
+    // Emotion
+    if (emotion !== "Default") {
+      push(
+        preferencesJson.emotion.options[
+          emotion as keyof typeof preferencesJson.emotion.options
+        ]
+      );
+    }
+
+    // Color mood
+    if (colorMood !== "Default") {
+      push(
+        `Color palette: ${
+          preferencesJson.colorMood.options[
+            colorMood as keyof typeof preferencesJson.colorMood.options
+          ]
+        }`
+      );
+    }
+
+    // Text emphasis
+    if (textEmphasis !== "Default") {
+      push(
+        preferencesJson.textEmphasis.options[
+          textEmphasis as keyof typeof preferencesJson.textEmphasis.options
+        ]
+      );
+    }
+
+    // Category
+    if (category !== "Default") {
+      push(
+        preferencesJson.category.options[
+          category as keyof typeof preferencesJson.category.options
+        ]
+      );
+    }
+
+    // Overlay elements
+    if (overlayElements.length > 0) {
+      push(
+        `Overlay: ${overlayElements
+          .map(
+            (el) =>
+              preferencesJson.overlayElements.options[
+                el as keyof typeof preferencesJson.overlayElements.options
+              ]
+          )
+          .join(", ")}`
+      );
+    }
+
+    return chunks.join(". ") + (chunks.length ? "." : "");
   };
 
-  const handleGenerate = () => {};
+  const handleGenerate = async () => {
+    if (prompt.length > 10) {
+      const suffix = buildSuffix();
+      const compiled = `${
+        aspectRatio === "9:16"
+          ? "A horizontal Youtube Shorts thumbnail"
+          : aspectRatio === "16:9"
+          ? "A vertical Youtube style thumbnail"
+          : "A square social media post thumbnail"
+      }. ${prompt.trim()}. ${suffix} Ensure text and key elements are inside safe zone to avoid cropping on previews.`.trim();
+
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/tools/thumbnail-generator`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              "x-api-key": `Bearer ${process.env.API_KEY}`,
+              "x-user-id": "",
+            },
+          }
+        );
+      } catch {}
+    }
+  };
+
+  console.log(session);
 
   return (
     <>
-      <div className="relative w-full max-w-[750px] p-5 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] rounded-xl">
+      <div className="relative w-full max-w-[850px] p-5 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] rounded-xl">
         <PromptBox prompt={prompt} setPrompt={setPrompt} />
+        <p>Signed in as {session?.user?.email}</p>
+        <p>User ID: {session?.user?.id}</p>
 
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -82,8 +199,8 @@ export default function ThumbnailGenerator() {
             <Preferences
               theme={theme}
               setTheme={setTheme}
-              layout={layout}
-              setLayout={setLayout}
+              style={style}
+              setStyle={setStyle}
               textStyle={textStyle}
               setTextStyle={setTextStyle}
               emotion={emotion}
@@ -96,6 +213,13 @@ export default function ThumbnailGenerator() {
               setCategory={setCategory}
               overlayElements={overlayElements}
               setOverlayElements={setOverlayElements}
+            />
+
+            <Reference
+              refImg={refImg}
+              setRefImg={setRefImg}
+              refWeight={refWeight}
+              setRefWeight={setRefWeight}
             />
 
             <Templates />

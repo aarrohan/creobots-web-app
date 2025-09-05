@@ -143,7 +143,7 @@ export default function Sidebar() {
     if (isClient) {
       setMenuContainerHeight(menuContainerRef.current?.clientHeight || 0);
     }
-  }, [isClient]);
+  }, [isClient, isOpened]);
 
   const linksParts: ILinksPart[] = [
     {

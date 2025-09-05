@@ -9,8 +9,8 @@
       "Minimal": "Clean, simple design, lots of whitespace, modern look"
     }
   },
-  "layout": {
-    "label": "Layout",
+  "style": {
+    "label": "Style",
     "options": {
       "Default": "",
       "Split Screen": "Split-screen composition, strong contrast between left and right",
@@ -49,6 +49,7 @@
     "label": "Color Mood",
     "options": {
       "Default": "",
+      "Cinematic": "Dramatic cinematic lighting",
       "High Contrast": "Bright high-contrast colors for readability",
       "Dark Moody": "Dark moody cinematic tones",
       "Bright Vibrant": "Bright vibrant colors, playful energy",
@@ -80,11 +81,11 @@
   "overlayElements": {
     "label": "Overlay Elements",
     "options": {
-      "Arrows": "Add bright red arrows pointing at key elements",
-      "Circles": "Add yellow circle highlights around important areas",
+      "Arrow": "Add bright red arrow pointing at key element",
+      "Circle": "Add yellow circle highlight around important area",
       "Emoji": "Include relevant emoji for emphasis",
-      "Question Marks": "Add big bold question marks for curiosity",
-      "Checkmarks": "Add bold checkmark or X symbols for clarity"
+      "Question Mark": "Add big bold question mark for curiosity",
+      "Checkmark": "Add bold checkmark or X symbol for clarity"
     }
   }
 }

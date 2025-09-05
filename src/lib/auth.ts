@@ -67,6 +67,8 @@ export const authOptions: AuthOptions = {
 
       if (user?.email) token.email = user.email;
 
+      console.log(token);
+
       return token;
     },
     async session({ session, token }) {

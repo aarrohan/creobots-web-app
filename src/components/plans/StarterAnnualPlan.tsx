@@ -144,8 +144,10 @@ export default function StarterAnnualPlan({ setType }: IProps) {
         </div>
 
         <div className="flex items-center gap-2">
-          <IncludedIcon />{" "}
-          <p className="text-sm">Titles & Hooks Generator (Coming Soon)</p>{" "}
+          <ExcludedIcon />{" "}
+          <p className="text-sm opacity-50">
+            Titles & Hooks Generator (Coming Soon)
+          </p>{" "}
           <Tooltip.Provider>
             <Tooltip.Root>
               <Tooltip.Trigger asChild>

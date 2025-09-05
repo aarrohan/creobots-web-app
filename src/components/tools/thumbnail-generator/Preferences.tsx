@@ -1,13 +1,25 @@
 "use client";
 import { useState } from "react";
-import { Key, Settings, X } from "lucide-react";
+import {
+  CaseSensitive,
+  CircleCheck,
+  Highlighter,
+  LayoutDashboard,
+  LayoutPanelLeft,
+  Palette,
+  Settings,
+  SmilePlus,
+  Sticker,
+  SwatchBook,
+  X,
+} from "lucide-react";
 import preferencesJson from "@/lib/preferences.json";
 
 interface IProps {
   theme: string;
   setTheme: (theme: string) => void;
-  layout: string;
-  setLayout: (layout: string) => void;
+  style: string;
+  setStyle: (style: string) => void;
   textStyle: string;
   setTextStyle: (textStyle: string) => void;
   emotion: string;
@@ -25,8 +37,8 @@ interface IProps {
 export default function Preferences({
   theme,
   setTheme,
-  layout,
-  setLayout,
+  style,
+  setStyle,
   textStyle,
   setTextStyle,
   emotion,
@@ -54,6 +66,17 @@ export default function Preferences({
           </div>
 
           <p className="text-sm">Preferences</p>
+
+          {theme !== "Default" ||
+          style !== "Default" ||
+          textStyle !== "Default" ||
+          emotion !== "Default" ||
+          colorMood !== "Default" ||
+          textEmphasis !== "Default" ||
+          category !== "Default" ||
+          overlayElements.length > 0 ? (
+            <CircleCheck size={15} className="text-green-300" />
+          ) : null}
         </div>
       </div>
 
@@ -71,8 +94,8 @@ export default function Preferences({
             <div className="grid gap-10">
               {/* Theme */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
-                  {preferencesJson.theme.label}
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <SwatchBook size={18} /> {preferencesJson.theme.label}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
@@ -98,23 +121,24 @@ export default function Preferences({
                 </div>
               </div>
 
-              {/* Layout */}
+              {/* Style */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
-                  {preferencesJson.layout.label}
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <LayoutPanelLeft size={18} />
+                  {preferencesJson.style.label}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
-                  {Object.entries(preferencesJson.layout.options).map(
+                  {Object.entries(preferencesJson.style.options).map(
                     ([key]) => {
                       return (
                         <p
                           key={key}
                           onClick={() => {
-                            setLayout(key);
+                            setStyle(key);
                           }}
                           className={`${
-                            key === layout
+                            key === style
                               ? "bg-white font-medium text-black"
                               : "bg-white/10"
                           } w-fit py-[2px] px-3 border border-white/5 rounded-full text-sm cursor-pointer duration-200`}
@@ -127,9 +151,10 @@ export default function Preferences({
                 </div>
               </div>
 
-              {/* Text Style */}
+              {/* Text style */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <CaseSensitive size={18} />
                   {preferencesJson.textStyle.label}
                 </p>
 
@@ -158,7 +183,8 @@ export default function Preferences({
 
               {/* Emotion */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <SmilePlus size={18} />
                   {preferencesJson.emotion.label}
                 </p>
 
@@ -185,9 +211,10 @@ export default function Preferences({
                 </div>
               </div>
 
-              {/* Color Mood */}
+              {/* Color mood */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <Palette size={18} />
                   {preferencesJson.colorMood.label}
                 </p>
 
@@ -214,9 +241,10 @@ export default function Preferences({
                 </div>
               </div>
 
-              {/* Text Emphasis */}
+              {/* Text emphasis */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <Highlighter size={18} />
                   {preferencesJson.textEmphasis.label}
                 </p>
 
@@ -245,7 +273,8 @@ export default function Preferences({
 
               {/* Category */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <LayoutDashboard size={18} />
                   {preferencesJson.category.label}
                 </p>
 
@@ -272,9 +301,10 @@ export default function Preferences({
                 </div>
               </div>
 
-              {/* Overlay Elements */}
+              {/* Overlay elements */}
               <div>
-                <p className="mb-3 text-xs uppercase text-white/50">
+                <p className="mb-3 flex items-center gap-1.5 text-sm">
+                  <Sticker size={18} />
                   {preferencesJson.overlayElements.label}
                 </p>
 
