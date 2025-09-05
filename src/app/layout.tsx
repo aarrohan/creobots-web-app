@@ -4,7 +4,6 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import PaddleProvider from "@/components/providers/PaddleProvider";
 import AuthProvider from "@/components/providers/AuthProvider";
-import { getServerSession } from "next-auth";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,16 +19,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession({
-    secret: process.env.NEXTAUTH_SECRET,
-  });
-
   return (
     <html lang="en">
       <body
         className={`${inter.variable} ${inter.className} antialiased bg-gradient-to-b from-[#5b92ff] to-black text-white`}
       >
-        <AuthProvider session={session}>
+        <AuthProvider>
           <PaddleProvider>{children}</PaddleProvider>
         </AuthProvider>
 

@@ -10,7 +10,7 @@ export default function Generations({ generations }: IProps) {
       {[...generations].reverse().map((generation, index) => {
         return (
           <Generation
-            key={index}
+            key={generation.id}
             title={`Generation #${generations.length - index}`}
             {...generation}
           />

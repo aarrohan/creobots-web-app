@@ -5,8 +5,9 @@ import Image from "next/image";
 import iconColoredWhiteImg from "@/assets/images/brand/icon/icon-colored-white.svg";
 
 export interface IProps {
-  title?: string;
+  id: string;
   isGenerating: boolean;
+  title?: string;
   prompt: string;
   aspectRatio: "9:16" | "16:9" | "1:1";
   images: string[];

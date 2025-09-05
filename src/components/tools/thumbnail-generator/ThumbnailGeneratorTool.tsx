@@ -32,6 +32,7 @@ export default function ThumbnailGeneratorTool() {
 
   const [generations, setGenerations] = useState<IGeneration[]>([
     {
+      id: Math.random().toString(36).substring(2, 15),
       isGenerating: false,
       prompt: `Let's replace this woman's face with Chris Hemsworth's face, the Oscar trophy on the left and the doll will be replaced by Thor's hammer. The color of the thumbnail can be blue, let's add contrast, well-lit points of light.`,
       aspectRatio: "16:9",
@@ -41,8 +42,9 @@ export default function ThumbnailGeneratorTool() {
       ],
     },
     {
-      isGenerating: true,
-      prompt: `Let's replace this woman's face with Chris Hemsworth's face, the Oscar trophy on the left and the doll will be replaced by Thor's hammer. The color of the thumbnail can be blue, let's add contrast, well-lit points of light.`,
+      id: Math.random().toString(36).substring(2, 15),
+      isGenerating: false,
+      prompt: `Let's replace this man's face with Chris Hemsworth's face, the Oscar trophy on the left and the doll will be replaced by Thor's hammer. The color of the thumbnail can be blue, let's add contrast, well-lit points of light.`,
       aspectRatio: "16:9",
       images: [
         "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-20_result.webp",
@@ -164,30 +166,70 @@ export default function ThumbnailGeneratorTool() {
           : "A square social media post thumbnail"
       }. ${prompt.trim()}. ${suffix} Ensure text and key elements are inside safe zone to avoid cropping on previews.`.trim();
 
+      const currentGenIndex = generations.length;
+
+      setGenerations((prev) => [
+        ...prev,
+        {
+          id: Math.random().toString(36).substring(2, 15),
+          isGenerating: true,
+          prompt: compiled,
+          aspectRatio,
+          images: [
+            "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-20_result.webp",
+            "https://storage.googleapis.com/serveradv/landing-page/carrosel/Adv-05_result.webp",
+          ],
+        },
+      ]);
+
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/tools/thumbnail-generator`,
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              "x-api-key": `Bearer ${process.env.API_KEY}`,
-              "x-user-id": "",
+        const res = await fetch("/api/tools/thumbnail-generator/generate", {
+          method: "POST",
+          body: JSON.stringify({
+            userId: session?.user?.id,
+            opts: {
+              prompt: compiled,
+              ar:
+                aspectRatio === "16:9"
+                  ? "AR_16_9"
+                  : aspectRatio === "9:16"
+                  ? "AR_9_16"
+                  : "AR_1_1",
+              refImg: refImg ? await refImg.arrayBuffer() : undefined,
+              refWeight: refImg ? refWeight : undefined,
             },
+          }),
+        });
+
+        if (res.ok) {
+          const resJson = await res.json();
+
+          if (resJson.success) {
+            setGenerations((prev) =>
+              prev.map((gen, i) =>
+                i === currentGenIndex
+                  ? {
+                      ...gen,
+                      isGenerating: false,
+                      images: resJson.data.outputUrls,
+                    }
+                  : gen
+              )
+            );
+          } else {
+            throw new Error(resJson.msg);
           }
-        );
-      } catch {}
+        }
+      } catch {
+        setGenerations((prev) => prev.filter((_, i) => i !== currentGenIndex));
+      }
     }
   };
-
-  console.log(session);
 
   return (
     <>
       <div className="relative w-full max-w-[850px] p-5 border border-white/10 bg-[rgba(52,76,125,0.15)] shadow-[inset_0px_64px_64px_32px_rgba(144,167,216,0.15)] rounded-xl">
         <PromptBox prompt={prompt} setPrompt={setPrompt} />
-        <p>Signed in as {session?.user?.email}</p>
-        <p>User ID: {session?.user?.id}</p>
 
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">

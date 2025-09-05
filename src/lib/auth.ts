@@ -22,9 +22,9 @@ async function upsertUser(input: {
 
   if (!res.ok) throw new Error(`SSO login failed: ${res.status}`);
 
-  return (await res.json()) as {
-    userId: string;
-  };
+  const resJson = await res.json();
+
+  return resJson.data.userId;
 }
 
 export const authOptions: AuthOptions = {
@@ -41,7 +41,7 @@ export const authOptions: AuthOptions = {
       if (!account) return false;
 
       try {
-        const { userId } = await upsertUser({
+        const userId = await upsertUser({
           provider: account.provider,
           providerAccountId: account.providerAccountId!,
           name: user?.name ?? profile?.name,
@@ -50,7 +50,6 @@ export const authOptions: AuthOptions = {
         });
 
         type CanonicalUser = typeof user & { _canonicalUserId?: string };
-
         (user as CanonicalUser)._canonicalUserId = userId;
 
         return true;
@@ -62,20 +61,20 @@ export const authOptions: AuthOptions = {
       type CanonicalUser = typeof user & { _canonicalUserId?: string };
 
       if (user && (user as CanonicalUser)._canonicalUserId) {
-        token.uid = (user as CanonicalUser)._canonicalUserId as string;
+        token.id = (user as CanonicalUser)._canonicalUserId as string;
       }
 
       if (user?.email) token.email = user.email;
 
-      console.log(token);
-
       return token;
     },
     async session({ session, token }) {
-      return {
-        ...session,
-        userId: token.uid,
-      };
+      if (session.user) {
+        (session.user as typeof session.user & { id?: string }).id =
+          token.id as string;
+      }
+
+      return session;
     },
   },
 };

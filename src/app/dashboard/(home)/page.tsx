@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   title: "Viral Thumbnails - Creobots",
 };
 
-export default function Home() {
+export default async function Home() {
   return <Content />;
 }
